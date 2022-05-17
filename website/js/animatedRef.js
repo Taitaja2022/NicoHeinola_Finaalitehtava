@@ -32,7 +32,11 @@ function aHandler(){
 }
 
 function animate(){
-    console.log("Animated")
+    if (width != refs[0].getBoundingClientRect().width) {
+        width = refs[0].getBoundingClientRect().width
+        moved = 0;
+        oldMoved = 0;
+    };
 
     done = false;
     animationHandler = setInterval(() => aHandler(), 1)
