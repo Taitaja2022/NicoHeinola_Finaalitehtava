@@ -1,0 +1,33 @@
+.Contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    min-height: 50px;
+    padding: 50px 0;
+    background: var(--navColor);
+}
+
+.Contact .Map {
+    width: 50%;
+    padding-left: 20px;
+}
+
+.Contact .ContactForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.Contact .ContactForm > * {
+    margin: 10px 0;
+}
+
+@media all and (max-width: 720px){
+    .Contact .ContactForm {
+        width: 80%;
+    }
+}
