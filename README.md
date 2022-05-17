@@ -3,4 +3,4 @@
 
 Sivusto on index.html nimisessä tiedostossa.
 
-Sivu pitää refreshaa, kun vaihtaa näytönkokoa tai muuten referenssien animaatio ei toimi täysin oikein
+Jos referenssit eivät animoidu oikein, kun vaihtaa ruudun kokoa, niin kannattaa refressaa sivu.
