@@ -1,6 +1,6 @@
-var div = document.getElementById("asub");
-var refs = div.getElementsByClassName("Ref");
-var width = refs[0].getBoundingClientRect().width;
+var div = document.getElementById("asub"); // Animated div which is moved
+var refs = div.getElementsByClassName("Ref"); // List of references (used for getting width)
+var width = refs[0].getBoundingClientRect().width; // With this the program knows how much it has to move references until a new one is on screen
 var moved = 0;
 var oldMoved = 0
 var count = refs.length - 1;
@@ -9,6 +9,7 @@ var done = false;
 
 var delay = 3 * 1000;
 
+// Moves references until a new on is shown
 function aHandler(){
     if(oldMoved + width <= moved){
         done = true;
@@ -31,6 +32,7 @@ function aHandler(){
     }
 }
 
+// Runs every 3 seconds and starts moving references
 function animate(){
     if (width != refs[0].getBoundingClientRect().width) {
         width = refs[0].getBoundingClientRect().width
