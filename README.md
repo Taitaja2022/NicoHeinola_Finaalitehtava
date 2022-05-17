@@ -1,6 +1,6 @@
 # NicoHeinola_Finaalitehtava
  Finaalitehtava
 
-Sivusto on etusivu.html nimisessä tiedostossa.
+Sivusto on index.html nimisessä tiedostossa.
 
-Kannattaa refreshaa sivu, kun vaihtaa näytönkokoa
+Sivu pitää refreshaa, kun vaihtaa näytönkokoa tai muuten referenssien animaatio ei toimi täysin oikein

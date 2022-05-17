@@ -22,6 +22,15 @@
     text-align: center;
 }
 
+.Herobanner .Content > * {
+    margin: 10px 0;
+}
+
 .Herobanner .Content .Header {
     text-align: center;
+}
+@media all and (max-width: 600px) {
+    .Herobanner {
+        height: initial;
+    }
 }
