@@ -7,6 +7,7 @@ Jos referenssit eivät animoidu oikein, kun vaihtaa ruudun kokoa, niin kannattaa
 Ohjeet intra sivulle:
 Intrasivulle pääsee, kun kirjoittaa osoite palkkiin: /intra
 Intrasivulla voi lisätä, muokata ja poistaa matkoja.
+Kun matkan lisää, se näkyy automaattisesti etusivun kartalla.
 
 Ohjeet kartan käyttöön:
 Kun intrasivulla on lisännyt matkan, se ilmestyy kartalle etusivulla.
