@@ -6,7 +6,7 @@ require "./utils/helper.php";
 require "./db/connection.php";
 
 session_start();
-ConnectDB("root", "");
+ConnectDB("ta22nh831_user", "OSh9aiheTh2k");
 
 if (isset($_GET["page"])) {
     $page = $_GET["page"];

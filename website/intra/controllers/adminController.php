@@ -6,8 +6,8 @@ function adminController()
         require "./models/liikuntamatka.php";
 
         $path = "./saved/";
-        $img_limit = 500 * 1000;
-        $pdf_limit = 10 * 1000 * 1000;
+        $img_limit = 512000; # 500 kb in bytes
+        $pdf_limit = 10485760; # 10 mb in bytes
 
         if (isset($_POST["addliikunta"], $_POST["lat"], $_POST["lng"], $_POST["title"], $_POST["desc"], $_POST["startdate"], $_POST["enddate"], $_FILES["img"], $_FILES["pdf"])) {
             $lat = $_POST["lat"];
