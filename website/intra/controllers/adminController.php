@@ -74,18 +74,41 @@ function adminController()
                     break;
                 }
             }
+
             if ($matka != null) {
-                try {
-                    if (file_exists($path . $matka["pdf_uusinimi"])) {
-                        unlink($path . $matka["pdf_uusinimi"]);
+
+                $duplicateImage = false;
+                $duplicatePDF = false;
+
+                foreach ($matkat as $m) {
+                    if ($m["id"] !== $matka["id"]) {
+                        if ($m["pdf_uusinimi"] == $matka["pdf_uusinimi"]) {
+                            $duplicatePDF = true;
+                        }
+                        if ($m["kuva_uusinimi"] == $matka["kuva_uusinimi"]) {
+                            $duplicateImage = true;
+                        }
+                        if ($duplicateImage && $duplicatePDF) {
+                            break;
+                        }
                     }
-                } catch (Exception $e) {
                 }
-                try {
-                    if (file_exists($path . $matka["kuva_uusinimi"])) {
-                        unlink($path . $matka["kuva_uusinimi"]);
+
+                if (!$duplicatePDF) {
+                    try {
+                        if (file_exists($path . $matka["pdf_uusinimi"])) {
+                            unlink($path . $matka["pdf_uusinimi"]);
+                        }
+                    } catch (Exception $e) {
                     }
-                } catch (Exception $e) {
+                }
+                if (!$duplicateImage) {
+                    try {
+                        if (file_exists($path . $matka["kuva_uusinimi"])) {
+                            unlink($path . $matka["kuva_uusinimi"]);
+                        }
+                    } catch (Exception $e) {
+                    }
                 }
             }
             // Tietokanta
@@ -194,7 +217,7 @@ function adminController()
                         echo "Failed to upload your image.";
                     }
                 }
-            } 
+            }
 
             updateLiikuntamatka($id, $lat, $lng, $title, $desc, $startdate, $enddate, $imgContent, $old_img_name, $new_img_name, $pdfContent, $old_pdf_name, $new_pdf_name);
         }

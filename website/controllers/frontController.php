@@ -12,10 +12,12 @@ function frontController()
         $to = "nico.heinola@edu.tampere.fi";
         $subject = "Ilmoittautuminen";
         
-        $message = "<b>This is HTML message.</b>";
-        $message .= "<h1>This is headline.</h1>";
+        $message = "<p>Matka: $title</p>";
+        $message .= "<p>Nimi: $name</p>";
+        $message .= "<p>Sähköposti: $email</p>";
+        $message .= "<p>Matkustavien ihmisten määrä: $amount</p>";
         
-        $header = "From:abc@somedomain.com \r\n";
+        $header = "From:$email \r\n";
         $header .= "Cc:afgh@somedomain.com \r\n";
         $header .= "MIME-Version: 1.0\r\n";
         $header .= "Content-type: text/html\r\n";
