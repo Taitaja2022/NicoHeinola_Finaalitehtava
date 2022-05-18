@@ -5,8 +5,8 @@ echo "
 <h1>Liikuntamatkojen lisäys</h1>
 <form enctype='multipart/form-data' style='display: flex; flex-direction: column; width: 500px' method='post'>
 <label>Sijainti</label>
-<input type='number' name='lat' placeholder='Lat' required>
-<input type='number' name='lng' placeholder='Lng' required>
+<input step='any' type='number' name='lat' placeholder='Lat' required>
+<input step='any' type='number' name='lng' placeholder='Lng' required>
 <label>Muut</label>
 <input type='text' name='title' placeholder='Otsikko' required>
 <textarea name='desc' placeholder='Kuvausteksti'></textarea>
@@ -52,9 +52,9 @@ if(isset($_POST["readytoedit"], $_POST["selected"])){
     <h1>Liikuntamatkojen lisäys</h1>
     <form enctype='multipart/form-data' style='display: flex; flex-direction: column; width: 500px' method='post'>
     <label>Sijainti</label>
-    <input value='".$matka["lat"]."' type='number' name='lat' placeholder='Lat' required>
+    <input step='any' value='".$matka["lat"]."' type='number' name='lat' placeholder='Lat' required>
     <input hidden=true value='".$matka["id"]."' type='number' name='id' placeholder='Lat' required>
-    <input value='".$matka["lng"]."' type='number' name='lng' placeholder='Lng' required>
+    <input step='any' value='".$matka["lng"]."' type='number' name='lng' placeholder='Lng' required>
     <label>Muut</label>
     <input value='".$matka["otsikko"]."' type='text' name='title' placeholder='Otsikko' required>
     <textarea name='desc' placeholder='Kuvausteksti'>".$matka["kuvausteksti"]."</textarea>

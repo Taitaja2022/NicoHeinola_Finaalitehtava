@@ -6,6 +6,8 @@ function adminController()
         require "./models/liikuntamatka.php";
 
         $path = "./saved/";
+        $img_limit = 500 * 1000;
+        $pdf_limit = 10 * 1000 * 1000;
 
         if (isset($_POST["addliikunta"], $_POST["lat"], $_POST["lng"], $_POST["title"], $_POST["desc"], $_POST["startdate"], $_POST["enddate"], $_FILES["img"], $_FILES["pdf"])) {
             $lat = $_POST["lat"];
@@ -24,9 +26,6 @@ function adminController()
 
             $imgContent = addslashes(file_get_contents($img["tmp_name"]));
             $pdfContent = addslashes(file_get_contents($pdf["tmp_name"]));
-
-            $img_limit = 500 * 1000;
-            $pdf_limit = 10 * 1000 * 1000;
 
             if ($img["size"] <= $img_limit && $pdf["size"] <= $pdf_limit) {
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -100,10 +99,6 @@ function adminController()
             $enddate = $_POST["enddate"];
             $id = $_POST["id"];
 
-
-            print_r($_FILES);
-
-
             if (isset($_FILES["img"]) && !empty($_FILES["img"]["tmp_name"])) {
                 $img = $_FILES["img"];
                 $old_img_name = $img["name"];
@@ -117,7 +112,7 @@ function adminController()
             }
             if (isset($_FILES["pdf"]) && !empty($_FILES["pdf"]["tmp_name"])) {
                 $pdf = $_FILES["pdf"];
-                $old_pdf_name = $img["name"];
+                $old_pdf_name = $pdf["name"];
                 $new_pdf_name = date("Y_m_d") . $title . ".pdf";
                 $pdfContent = addslashes(file_get_contents($pdf["tmp_name"]));
             } else {
@@ -126,6 +121,76 @@ function adminController()
                 $new_pdf_name = null;;
                 $pdfContent = null;
             }
+
+            // Poistaa vanhat tiedostot ja laittaa uudet
+            if ($pdf != null && $pdf["size"] <= $pdf_limit) {
+                $id = $_POST["id"];
+
+                // Kovalevy
+                $matka = null;
+                foreach ($matkat as $m) {
+                    if ($m["id"] == $id) {
+                        $matka = $m;
+                        break;
+                    }
+                }
+                if ($matka != null) {
+                    try {
+                        if (file_exists($path . $matka["pdf_uusinimi"])) {
+                            unlink($path . $matka["pdf_uusinimi"]);
+                        }
+                    } catch (Exception $e) {
+                    }
+                }
+
+                $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                $mimetypepdf = finfo_file($finfo, $_FILES['pdf']['tmp_name']);
+                if ($mimetypepdf == "application/pdf") {
+                    // PDF
+                    if (is_uploaded_file($pdf["tmp_name"])) {
+                        if (move_uploaded_file($pdf["tmp_name"], $path . $new_pdf_name)) {
+                        } else {
+                            echo "Failed to move your image.";
+                        }
+                    } else {
+                        echo "Failed to upload your image.";
+                    }
+                }
+            }
+            if ($img != null && $img["size"] <= $img_limit) {
+                $id = $_POST["id"];
+
+                // Kovalevy
+                $matka = null;
+                foreach ($matkat as $m) {
+                    if ($m["id"] == $id) {
+                        $matka = $m;
+                        break;
+                    }
+                }
+                if ($matka != null) {
+                    try {
+                        if (file_exists($path . $matka["kuva_uusinimi"])) {
+                            unlink($path . $matka["kuva_uusinimi"]);
+                        }
+                    } catch (Exception $e) {
+                    }
+                }
+
+                $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                $mimetypeimg = finfo_file($finfo, $_FILES['img']['tmp_name']);
+                if (($mimetypeimg == 'image/jpeg' || $mimetypeimg == 'image/jpg')) {
+                    // Image
+                    if (is_uploaded_file($img["tmp_name"])) {
+                        if (move_uploaded_file($img["tmp_name"], $path . $new_img_name)) {
+                        } else {
+                            echo "Failed to move your image.";
+                        }
+                    } else {
+                        echo "Failed to upload your image.";
+                    }
+                }
+            } 
 
             updateLiikuntamatka($id, $lat, $lng, $title, $desc, $startdate, $enddate, $imgContent, $old_img_name, $new_img_name, $pdfContent, $old_pdf_name, $new_pdf_name);
         }

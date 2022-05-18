@@ -1,10 +1,19 @@
 <?php
 
 require "./controllers/frontController.php";
+require "./models/liikuntamatka.php";
+require "./db/connection.php";
 
-$url = $_SERVER['REQUEST_URI'];
+session_start();
+ConnectDB("root", "");
 
-switch ($url) {
+if (isset($_GET["page"])) {
+    $page = $_GET["page"];
+} else {
+    $page = "/";
+}
+
+switch ($page) {
     case "/":
         frontController();
         break;

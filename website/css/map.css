@@ -18,3 +18,48 @@
     width: 80%;
     margin: auto;
 }
+
+/* MAKER */
+
+.popup {
+    word-break: break-all;
+}
+
+
+.popup * {
+    color: var(--textColor2) !important;
+}
+
+.popup p {
+    font-size: 20px;
+}
+
+.popup .headerDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.popup .headerDiv .Image {
+    width: 140px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.popup .headerDiv .TitleDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup .ButtonDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+.popup .ButtonDiv a {
+    text-decoration: underline;
+}

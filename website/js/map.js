@@ -6,6 +6,51 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Sets and shwos a marker on the map
+var greenIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
+
+var blueIcon = new L.Icon({
+    iconUrl: 'https://unpkg.com/leaflet@1.8.0/dist/images/marker-icon.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
+
 L.marker([61.49481, 21.84636]).addTo(map)
     .bindPopup('Kanahaukantie 12, 28220 Pori (Isojoenranta)')
     .openPopup();
+
+function signup(title) {
+    window.location = "?page=signup";
+}
+
+function addMarker(lat, lng, imgPath, title, startdate, enddate, text, pdfName) {
+
+    var d = new Date(enddate);
+    today = new Date();
+    var past = today >= d;
+
+    L.marker([Number(lat), Number(lng)], { icon: (past) ? greenIcon : blueIcon }).addTo(map)
+        .bindPopup(`<div class='popup'>
+    <div class='headerDiv'>
+    <img class='Image' alt='Kuva' src='${imgPath}'>
+    <div class='TitleDiv'>
+    <h3 class='Title'>${title}</h3>
+    <p class='Date'>${startdate} - ${enddate}</p>
+    </div>
+    </div>
+    <p class='Text'>${text}</p>
+    <div class='ButtonDiv'>
+    <button onClick="window.open('${pdfName}');">Lataa Esite</button>
+    <button onClick="togglePopup('${title}',${past});">Ilmoittaudu</button>
+    </div>
+    </div>`, { maxWidth: 560 })
+
+
+}

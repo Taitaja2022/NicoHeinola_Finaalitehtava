@@ -7,13 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verkkosivu</title>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-        crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
 
-    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-        crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
 
     <!--script src="./js/leaflet.js"></script-->
 
@@ -21,6 +17,7 @@
     <link rel="stylesheet" href="./css/nav.css">
     <link rel="stylesheet" href="./css/herobanner.css">
     <link rel="stylesheet" href="./css/service.css">
+    <link rel="stylesheet" href="./css/popup.css">
     <link rel="stylesheet" href="./css/contact.css">
     <link rel="stylesheet" href="./css/references.css">
     <link rel="stylesheet" href="./css/map.css">
@@ -30,6 +27,18 @@
 </head>
 
 <body>
+    <div id="popupDiv" class="PopupDiv Hidden">
+        <form class="PopupForm" method="post">
+            <p class="Close" onclick="togglePopup('',false)">Sulje</p>
+            <h2>Ilmoittautuminen</h2>
+            <input type="text" name="name" placeholder="Etu- ja sukunimi" required>
+            <input readonly id="titleandname" type="text" name="title" required>
+            <input type="email" name="email" placeholder="Sähköposti" required>
+            <input min="1" type="number" name="amount" placeholder="Matkustavien ihmisten määrä" required>
+            <input class="Button" type="submit" value="Lähetä">
+        </form>
+    </div>
+    <script src="./js/popupForm.js"></script>
     <header>
         <nav>
             <img alt="Logo" class="Logo" src="./images/HeroBanner/AnneSetalaLogo.jpg">
@@ -82,77 +91,77 @@
         </div>
         <div class="Content" id="animatedref">
             <div id="asub" class="sub">
-            <div class="Ref">
-                <h3 class="Header">Taloushallinnon ammattilainen Anja Kirjuri, 45-vuotta.</h3>
-                <img alt="Kuva" src="./images/Referenssit/Referenssi1_AnjaKirjuri.jpg">
-                <p class="Text">Parasta Annen liikuntamatkoissa on ehdottomasti työhyvinvoinnin kasvu. Liikuntamatkat tuovat erinomaisen tasapainon toimisto ja näyttöpäätteellä tehtävään työhön. Näyttöpäätetyöskentelyssä minulle tulee helposti erilaisia hartia tai niskavaivoja. Annen matkoihin on helppo heittäytyä mukaan ja elimistö voi hyvin liikuntamatkan jälkeen. Työhön tulee uutta puhtia, kun ihminen voi hyvin! </p>
-                <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/yhti%c3%b6-liiketoimintaa-ty%c3%b6ntekij%c3%a4-1067978/)</p>
-                <p class="Text">Liikuntamatka: Itävalta 19.–26.5.2018</p>
+                <div class="Ref">
+                    <h3 class="Header">Taloushallinnon ammattilainen Anja Kirjuri, 45-vuotta.</h3>
+                    <img alt="Kuva" src="./images/Referenssit/Referenssi1_AnjaKirjuri.jpg">
+                    <p class="Text">Parasta Annen liikuntamatkoissa on ehdottomasti työhyvinvoinnin kasvu. Liikuntamatkat tuovat erinomaisen tasapainon toimisto ja näyttöpäätteellä tehtävään työhön. Näyttöpäätetyöskentelyssä minulle tulee helposti erilaisia hartia tai niskavaivoja. Annen matkoihin on helppo heittäytyä mukaan ja elimistö voi hyvin liikuntamatkan jälkeen. Työhön tulee uutta puhtia, kun ihminen voi hyvin! </p>
+                    <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/yhti%c3%b6-liiketoimintaa-ty%c3%b6ntekij%c3%a4-1067978/)</p>
+                    <p class="Text">Liikuntamatka: Itävalta 19.–26.5.2018</p>
+                </div>
+                <div class="Ref">
+                    <h3 class="Header">Ohjelmoija Kalle Koodari, 38-vuotta.</h3>
+                    <img alt="Kuva" src="./images/Referenssit/Referenssi2_KalleKoodari.jpg">
+                    <p class="Text">Löysin Annen liikuntamatkat tyttöystäväni kanssa. Matkoissa parasta on helppous ja hyvin toimiva kokonaisuus. Olemme käyttäneet Annen fysioterapiapalveluita aikaisemmin, liikuntamatkoilla kaikki on järjestetty ja stressi helpottuu!</p>
+                    <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/kannettava-tietokone-koodi-2557468/)</p>
+                    <p class="Text">Liikuntamatka: Slovenia 2.–9.10.2019</p>
+                </div>
+                <div class="Ref">
+                    <h3 class="Header">Lääkäri Lenni Lekuri, 58-vuotta.</h3>
+                    <img alt="Kuva" src="./images/Referenssit/Referenssi3_LenniLekuri.jpg">
+                    <p class="Text">Lääkärinä tiedän, että ihmisen terveyteen tarvitaan kokonaisvaltaista hyvinvointia. Suosittelen Anne Setälän liikuntamatkoja kaikille, jotka haluavat lisätä hyvinvointiaan!</p>
+                    <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/kannettava-tietokone-koodi-2557468/)</p>
+                    <p class="Text">Liikuntamatka: Itävalta 19.–26.5.2018 ja Slovenia 2.–9.10.2019</p>
+                </div>
+                <div class="Ref">
+                    <h3 class="Header">Puutarhuri Kalle Kukkanen, 45-vuotta.</h3>
+                    <img alt="Kuva" src="./images/Referenssit/Refrenssi4_KalleKukkanen.jpg">
+                    <p class="Text">Annen liikuntamatkojen kohteet ovat aina hyvin valittuja ja kohteissa saa hyviä ideoita myös omaan työhön. Puutarhurina teen työtä käsilläni ja fysiikka on aina kovilla. Työni ajoittuvat puutarhan aina kevät, kesä ja syystoimiin. Liikuntamatkoista onkin tullut minulle jo tapa päättää kesän sesonkikausi oman hyvinvoinnin äärelle. </p>
+                    <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/kannettava-tietokone-koodi-2557468/)</p>
+                    <p class="Text">Liikuntamatka: Itävalta 19.–26.5.2018</p>
+                </div>
+                <div class="Ref">
+                    <h3 class="Header">Taksiyrittäjä Timo Taksi, 50-vuotta.</h3>
+                    <img alt="Kuva" src="./images/Referenssit/Referenssi5_TimoTaksi.jpg">
+                    <p class="Text">Ostin itselleni ensimmäisen liikuntamatkan 50vuotislahjaksi. Taksiyrittäjänä teen pitkää päivää ja auton ratissa istuminen vaatii tasapainoksi liikuntaa ja hyvinvointia. Hyvinvointimatkan jälkeen huomasin olevani paljon virkeämpi ja työhyvinvointi lisääntyi selvästi. Lähden varmasti Annen matkaan uudestaan!</p>
+                    <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/kes%c3%a4-puutarha-kukat-puutarhuri-3623282/)</p>
+                    <p class="Text">Liikuntamatka: Itävalta 19.–26.5.2018</p>
+                </div>
+                <div class="Ref">
+                    <h3 class="Header">Taloushallinnon ammattilainen Anja Kirjuri, 45-vuotta.</h3>
+                    <img alt="Kuva" src="./images/Referenssit/Referenssi1_AnjaKirjuri.jpg">
+                    <p class="Text">Parasta Annen liikuntamatkoissa on ehdottomasti työhyvinvoinnin kasvu. Liikuntamatkat tuovat erinomaisen tasapainon toimisto ja näyttöpäätteellä tehtävään työhön. Näyttöpäätetyöskentelyssä minulle tulee helposti erilaisia hartia tai niskavaivoja. Annen matkoihin on helppo heittäytyä mukaan ja elimistö voi hyvin liikuntamatkan jälkeen. Työhön tulee uutta puhtia, kun ihminen voi hyvin! </p>
+                    <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/yhti%c3%b6-liiketoimintaa-ty%c3%b6ntekij%c3%a4-1067978/)</p>
+                    <p class="Text">Liikuntamatka: Itävalta 19.–26.5.2018</p>
+                </div>
+                <div class="Ref">
+                    <h3 class="Header">Ohjelmoija Kalle Koodari, 38-vuotta.</h3>
+                    <img alt="Kuva" src="./images/Referenssit/Referenssi2_KalleKoodari.jpg">
+                    <p class="Text">Löysin Annen liikuntamatkat tyttöystäväni kanssa. Matkoissa parasta on helppous ja hyvin toimiva kokonaisuus. Olemme käyttäneet Annen fysioterapiapalveluita aikaisemmin, liikuntamatkoilla kaikki on järjestetty ja stressi helpottuu!</p>
+                    <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/kannettava-tietokone-koodi-2557468/)</p>
+                    <p class="Text">Liikuntamatka: Slovenia 2.–9.10.2019</p>
+                </div>
+                <div class="Ref">
+                    <h3 class="Header">Lääkäri Lenni Lekuri, 58-vuotta.</h3>
+                    <img alt="Kuva" src="./images/Referenssit/Referenssi3_LenniLekuri.jpg">
+                    <p class="Text">Lääkärinä tiedän, että ihmisen terveyteen tarvitaan kokonaisvaltaista hyvinvointia. Suosittelen Anne Setälän liikuntamatkoja kaikille, jotka haluavat lisätä hyvinvointiaan!</p>
+                    <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/kannettava-tietokone-koodi-2557468/)</p>
+                    <p class="Text">Liikuntamatka: Itävalta 19.–26.5.2018 ja Slovenia 2.–9.10.2019</p>
+                </div>
+                <div class="Ref">
+                    <h3 class="Header">Puutarhuri Kalle Kukkanen, 45-vuotta.</h3>
+                    <img alt="Kuva" src="./images/Referenssit/Refrenssi4_KalleKukkanen.jpg">
+                    <p class="Text">Annen liikuntamatkojen kohteet ovat aina hyvin valittuja ja kohteissa saa hyviä ideoita myös omaan työhön. Puutarhurina teen työtä käsilläni ja fysiikka on aina kovilla. Työni ajoittuvat puutarhan aina kevät, kesä ja syystoimiin. Liikuntamatkoista onkin tullut minulle jo tapa päättää kesän sesonkikausi oman hyvinvoinnin äärelle. </p>
+                    <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/kannettava-tietokone-koodi-2557468/)</p>
+                    <p class="Text">Liikuntamatka: Itävalta 19.–26.5.2018</p>
+                </div>
+                <div class="Ref">
+                    <h3 class="Header">Taksiyrittäjä Timo Taksi, 50-vuotta.</h3>
+                    <img alt="Kuva" src="./images/Referenssit/Referenssi5_TimoTaksi.jpg">
+                    <p class="Text">Ostin itselleni ensimmäisen liikuntamatkan 50vuotislahjaksi. Taksiyrittäjänä teen pitkää päivää ja auton ratissa istuminen vaatii tasapainoksi liikuntaa ja hyvinvointia. Hyvinvointimatkan jälkeen huomasin olevani paljon virkeämpi ja työhyvinvointi lisääntyi selvästi. Lähden varmasti Annen matkaan uudestaan!</p>
+                    <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/kes%c3%a4-puutarha-kukat-puutarhuri-3623282/)</p>
+                    <p class="Text">Liikuntamatka: Itävalta 19.–26.5.2018</p>
+                </div>
             </div>
-            <div class="Ref">
-                <h3 class="Header">Ohjelmoija Kalle Koodari, 38-vuotta.</h3>
-                <img alt="Kuva" src="./images/Referenssit/Referenssi2_KalleKoodari.jpg">
-                <p class="Text">Löysin Annen liikuntamatkat tyttöystäväni kanssa. Matkoissa parasta on helppous ja hyvin toimiva kokonaisuus. Olemme käyttäneet Annen fysioterapiapalveluita aikaisemmin, liikuntamatkoilla kaikki on järjestetty ja stressi helpottuu!</p>
-                <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/kannettava-tietokone-koodi-2557468/)</p>
-                <p class="Text">Liikuntamatka: Slovenia 2.–9.10.2019</p>
-            </div>
-            <div class="Ref">
-                <h3 class="Header">Lääkäri Lenni Lekuri, 58-vuotta.</h3>
-                <img alt="Kuva" src="./images/Referenssit/Referenssi3_LenniLekuri.jpg">
-                <p class="Text">Lääkärinä tiedän, että ihmisen terveyteen tarvitaan kokonaisvaltaista hyvinvointia. Suosittelen Anne Setälän liikuntamatkoja kaikille, jotka haluavat lisätä hyvinvointiaan!</p>
-                <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/kannettava-tietokone-koodi-2557468/)</p>
-                <p class="Text">Liikuntamatka: Itävalta 19.–26.5.2018 ja Slovenia 2.–9.10.2019</p>
-            </div>
-            <div class="Ref">
-                <h3 class="Header">Puutarhuri Kalle Kukkanen, 45-vuotta.</h3>
-                <img alt="Kuva" src="./images/Referenssit/Refrenssi4_KalleKukkanen.jpg">
-                <p class="Text">Annen liikuntamatkojen kohteet ovat aina hyvin valittuja ja kohteissa saa hyviä ideoita myös omaan työhön. Puutarhurina teen työtä käsilläni ja fysiikka on aina kovilla. Työni ajoittuvat puutarhan aina kevät, kesä ja syystoimiin. Liikuntamatkoista onkin tullut minulle jo tapa päättää kesän sesonkikausi oman hyvinvoinnin äärelle.  </p>
-                <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/kannettava-tietokone-koodi-2557468/)</p>
-                <p class="Text">Liikuntamatka: Itävalta 19.–26.5.2018</p>
-            </div>
-            <div class="Ref">
-                <h3 class="Header">Taksiyrittäjä Timo Taksi, 50-vuotta.</h3>
-                <img alt="Kuva" src="./images/Referenssit/Referenssi5_TimoTaksi.jpg">
-                <p class="Text">Ostin itselleni ensimmäisen liikuntamatkan 50vuotislahjaksi. Taksiyrittäjänä teen pitkää päivää ja auton ratissa istuminen vaatii tasapainoksi liikuntaa ja hyvinvointia. Hyvinvointimatkan jälkeen huomasin olevani paljon virkeämpi ja työhyvinvointi lisääntyi selvästi. Lähden varmasti Annen matkaan uudestaan!</p>
-                <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/kes%c3%a4-puutarha-kukat-puutarhuri-3623282/)</p>
-                <p class="Text">Liikuntamatka: Itävalta 19.–26.5.2018</p>
-            </div>
-            <div class="Ref">
-                <h3 class="Header">Taloushallinnon ammattilainen Anja Kirjuri, 45-vuotta.</h3>
-                <img alt="Kuva" src="./images/Referenssit/Referenssi1_AnjaKirjuri.jpg">
-                <p class="Text">Parasta Annen liikuntamatkoissa on ehdottomasti työhyvinvoinnin kasvu. Liikuntamatkat tuovat erinomaisen tasapainon toimisto ja näyttöpäätteellä tehtävään työhön. Näyttöpäätetyöskentelyssä minulle tulee helposti erilaisia hartia tai niskavaivoja. Annen matkoihin on helppo heittäytyä mukaan ja elimistö voi hyvin liikuntamatkan jälkeen. Työhön tulee uutta puhtia, kun ihminen voi hyvin! </p>
-                <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/yhti%c3%b6-liiketoimintaa-ty%c3%b6ntekij%c3%a4-1067978/)</p>
-                <p class="Text">Liikuntamatka: Itävalta 19.–26.5.2018</p>
-            </div>
-            <div class="Ref">
-                <h3 class="Header">Ohjelmoija Kalle Koodari, 38-vuotta.</h3>
-                <img alt="Kuva" src="./images/Referenssit/Referenssi2_KalleKoodari.jpg">
-                <p class="Text">Löysin Annen liikuntamatkat tyttöystäväni kanssa. Matkoissa parasta on helppous ja hyvin toimiva kokonaisuus. Olemme käyttäneet Annen fysioterapiapalveluita aikaisemmin, liikuntamatkoilla kaikki on järjestetty ja stressi helpottuu!</p>
-                <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/kannettava-tietokone-koodi-2557468/)</p>
-                <p class="Text">Liikuntamatka: Slovenia 2.–9.10.2019</p>
-            </div>
-            <div class="Ref">
-                <h3 class="Header">Lääkäri Lenni Lekuri, 58-vuotta.</h3>
-                <img alt="Kuva" src="./images/Referenssit/Referenssi3_LenniLekuri.jpg">
-                <p class="Text">Lääkärinä tiedän, että ihmisen terveyteen tarvitaan kokonaisvaltaista hyvinvointia. Suosittelen Anne Setälän liikuntamatkoja kaikille, jotka haluavat lisätä hyvinvointiaan!</p>
-                <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/kannettava-tietokone-koodi-2557468/)</p>
-                <p class="Text">Liikuntamatka: Itävalta 19.–26.5.2018 ja Slovenia 2.–9.10.2019</p>
-            </div>
-            <div class="Ref">
-                <h3 class="Header">Puutarhuri Kalle Kukkanen, 45-vuotta.</h3>
-                <img alt="Kuva" src="./images/Referenssit/Refrenssi4_KalleKukkanen.jpg">
-                <p class="Text">Annen liikuntamatkojen kohteet ovat aina hyvin valittuja ja kohteissa saa hyviä ideoita myös omaan työhön. Puutarhurina teen työtä käsilläni ja fysiikka on aina kovilla. Työni ajoittuvat puutarhan aina kevät, kesä ja syystoimiin. Liikuntamatkoista onkin tullut minulle jo tapa päättää kesän sesonkikausi oman hyvinvoinnin äärelle.  </p>
-                <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/kannettava-tietokone-koodi-2557468/)</p>
-                <p class="Text">Liikuntamatka: Itävalta 19.–26.5.2018</p>
-            </div>
-            <div class="Ref">
-                <h3 class="Header">Taksiyrittäjä Timo Taksi, 50-vuotta.</h3>
-                <img alt="Kuva" src="./images/Referenssit/Referenssi5_TimoTaksi.jpg">
-                <p class="Text">Ostin itselleni ensimmäisen liikuntamatkan 50vuotislahjaksi. Taksiyrittäjänä teen pitkää päivää ja auton ratissa istuminen vaatii tasapainoksi liikuntaa ja hyvinvointia. Hyvinvointimatkan jälkeen huomasin olevani paljon virkeämpi ja työhyvinvointi lisääntyi selvästi. Lähden varmasti Annen matkaan uudestaan!</p>
-                <p class="Text">(Kuva lähde: https://pixabay.com/fi/photos/kes%c3%a4-puutarha-kukat-puutarhuri-3623282/)</p>
-                <p class="Text">Liikuntamatka: Itävalta 19.–26.5.2018</p>
-            </div>
-        </div>
         </div>
     </section>
     <script src="./js/animatedRef.js"></script>

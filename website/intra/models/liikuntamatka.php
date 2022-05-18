@@ -26,7 +26,8 @@ function getLiikuntamatkat()
     return $data;
 }
 
-function deleteLiikuntamatka($id){
+function deleteLiikuntamatka($id)
+{
     $pdo = getConnection();
 
     $sql = "DELETE FROM liikuntamatka WHERE id=?; ";
@@ -34,26 +35,25 @@ function deleteLiikuntamatka($id){
     return $stmt->execute([$id]);
 }
 
-function updateLiikuntamatka($id,$lat, $lng, $title, $desc, $startdate, $enddate, $img, $old_img_name, $new_img_name, $pdf, $old_pdf_name, $new_pdf_name){
+function updateLiikuntamatka($id, $lat, $lng, $title, $desc, $startdate, $enddate, $img, $old_img_name, $new_img_name, $pdf, $old_pdf_name, $new_pdf_name)
+{
     $pdo = getConnection();
-    
-    /*
-     UPDATE table_name
-SET column1 = value1, column2 = value2, ...
-WHERE condition; 
-    */
+
     // pdf_uusinimi,pdf_vanhanimi,kuva_uusinimi,kuva_vanhanimi
     $sql = "UPDATE liikuntamatka SET lat=?,lng=?,otsikko=?,kuvausteksti=?,alkupvm=?,loppupvm=? WHERE id=?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$lat, $lng, $title, $desc, $startdate, $enddate, $id]);
 
     // PDF
-    $sql = "UPDATE liikuntamatka SET pdf=?,pdf_uusinimi=?,pdf_vanhanimi=? WHERE id=?";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$pdf,$new_pdf_name,$old_pdf_name,$id]);
-
+    if ($pdf != null) {
+        $sql = "UPDATE liikuntamatka SET pdf=?,pdf_uusinimi=?,pdf_vanhanimi=? WHERE id=?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$pdf, $new_pdf_name, $old_pdf_name, $id]);
+    }
     // Image
-    $sql = "UPDATE liikuntamatka SET pdf=?,pdf_uusinimi=?,pdf_vanhanimi=? WHERE id=?";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$pdf,$new_pdf_name,$old_pdf_name,$id]);
+    if ($img != null) {
+        $sql = "UPDATE liikuntamatka SET kuva=?,kuva_uusinimi=?,kuva_vanhanimi=? WHERE id=?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$img, $new_img_name, $old_img_name, $id]);
+    }
 }

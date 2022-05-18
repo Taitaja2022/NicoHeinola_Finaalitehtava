@@ -1,0 +1,42 @@
+.PopupDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 500;
+    pointer-events: none;
+}
+
+.Hidden {
+    display: none;
+}
+
+
+.PopupDiv .PopupForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: min-content;
+    background: var(--navColor);
+    margin: auto;
+    text-align: center;
+    padding: 30px;
+    border-radius: 25px;
+    pointer-events: all;
+}
+
+.PopupDiv .PopupForm > * {
+    margin-bottom: 20px;
+}
+
+.PopupDiv .PopupForm .Close {
+    margin: 0;
+    margin-left: auto;
+}
+
+.PopupDiv .PopupForm .Close:hover {
+    cursor: pointer;
+}
