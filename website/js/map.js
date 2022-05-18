@@ -34,7 +34,7 @@ function addMarker(lat, lng, imgPath, title, startdate, enddate, text, pdfName) 
 
     var d = new Date(enddate);
     today = new Date();
-    var past = today >= d;
+    var past = today <= d;
 
     L.marker([Number(lat), Number(lng)], { icon: (past) ? greenIcon : blueIcon }).addTo(map)
         .bindPopup(`<div class='popup'>

@@ -12,8 +12,8 @@ function adminController()
         if (isset($_POST["addliikunta"], $_POST["lat"], $_POST["lng"], $_POST["title"], $_POST["desc"], $_POST["startdate"], $_POST["enddate"], $_FILES["img"], $_FILES["pdf"])) {
             $lat = $_POST["lat"];
             $lng = $_POST["lng"];
-            $title = $_POST["title"];
-            $desc = $_POST["desc"];
+            $title = sanitizeString($_POST["title"]);
+            $desc = sanitizeString($_POST["desc"]);
             $startdate = $_POST["startdate"];
             $enddate = $_POST["enddate"];
             $img = $_FILES["img"];
@@ -23,6 +23,8 @@ function adminController()
 
             $new_img_name = date("Y_m_d") . $title . ".jpg";
             $new_pdf_name = date("Y_m_d") . $title . ".pdf";
+            $new_img_name = sanitizeName($new_img_name);
+            $new_pdf_name = sanitizeName($new_pdf_name);
 
             $imgContent = addslashes(file_get_contents($img["tmp_name"]));
             $pdfContent = addslashes(file_get_contents($pdf["tmp_name"]));
@@ -93,8 +95,8 @@ function adminController()
         if (isset($_POST["edit"], $_POST["lat"], $_POST["id"], $_POST["lng"], $_POST["title"], $_POST["desc"], $_POST["startdate"], $_POST["enddate"])) {
             $lat = $_POST["lat"];
             $lng = $_POST["lng"];
-            $title = $_POST["title"];
-            $desc = $_POST["desc"];
+            $title = sanitizeString($_POST["title"]);
+            $desc = sanitizeString($_POST["desc"]);
             $startdate = $_POST["startdate"];
             $enddate = $_POST["enddate"];
             $id = $_POST["id"];
@@ -103,6 +105,7 @@ function adminController()
                 $img = $_FILES["img"];
                 $old_img_name = $img["name"];
                 $new_img_name = date("Y_m_d") . $title . ".jpg";
+                $new_img_name = sanitizeName($new_img_name);
                 $imgContent = addslashes(file_get_contents($img["tmp_name"]));
             } else {
                 $img = null;
@@ -114,6 +117,7 @@ function adminController()
                 $pdf = $_FILES["pdf"];
                 $old_pdf_name = $pdf["name"];
                 $new_pdf_name = date("Y_m_d") . $title . ".pdf";
+                $new_pdf_name = sanitizeName($new_pdf_name);
                 $pdfContent = addslashes(file_get_contents($pdf["tmp_name"]));
             } else {
                 $pdf = null;
