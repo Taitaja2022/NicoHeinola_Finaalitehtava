@@ -47,8 +47,8 @@ function addMarker(lat, lng, imgPath, title, startdate, enddate, text, pdfName) 
     </div>
     <p class='Text'>${text}</p>
     <div class='ButtonDiv'>
-    <button onClick="window.open('${pdfName}');">Lataa Esite</button>
-    <button onClick="togglePopup('${title}',${past});">Ilmoittaudu</button>
+    <a onClick="window.open('${pdfName}');">Lataa Esite</a>
+    <a onClick="togglePopup('${title}',${past});">Ilmoittaudu</a>
     </div>
     </div>`, { maxWidth: 560 })
 

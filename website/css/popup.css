@@ -40,3 +40,7 @@
 .PopupDiv .PopupForm .Close:hover {
     cursor: pointer;
 }
+
+.PopupDiv a:hover{
+    cursor: pointer !important;
+}
