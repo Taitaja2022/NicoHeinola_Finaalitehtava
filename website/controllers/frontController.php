@@ -9,7 +9,7 @@ function frontController()
         $email = $_POST["email"];
         $amount = $_POST["amount"];
 
-        $to = "nico.heinola@edu.tampere.fi";
+        $to = "keijo.salakari@winnova.fi";
         $subject = "Ilmoittautuminen";
         
         $message = "<p>Matka: $title</p>";
