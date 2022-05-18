@@ -1,7 +1,11 @@
 <?php
 
-$url = $_SERVER['REQUEST_URI'];    
-      
-echo $url;  
+require "./controllers/frontController.php";
 
-require "./views/index.html";
+$url = $_SERVER['REQUEST_URI'];
+
+switch ($url) {
+    case "/":
+        frontController();
+        break;
+}
