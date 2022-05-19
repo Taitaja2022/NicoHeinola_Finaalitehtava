@@ -1,0 +1,37 @@
+:root {
+  --bg-color: #fbe012;
+  --link-color: #7bb4ff;
+  --font: serif;
+}
+ body {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background: yellow;
+   width: 100%;
+   height: 100vh;
+   margin: 0;
+ }
+
+ h1 {
+   background: white;
+   padding: 10px;
+   border: 1px solid black;
+   margin-bottom: 50px;
+ }
+
+ .boxes {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 25px;
+  row-gap: 25px;
+  padding: 10px;
+}
+
+.boxes > * {
+  background: white;
+  padding: 10px;
+  border: 1px solid black;
+  width: 350px;
+}
