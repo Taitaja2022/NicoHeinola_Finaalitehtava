@@ -4,3 +4,77 @@
   --orange-color: #fda543;
   --dark-color: #193b48;
 }
+
+body {
+  margin: 0;
+}
+
+.load {}
+
+.load * {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier();
+  animation-iteration-count: infinite;
+}
+
+#e1 {
+  background: var(--dark-color);
+  animation-name: "e1";
+  left: 0px;
+}
+
+#e2 {
+  background: var(--orange-color);
+  animation-name: "e2";
+  left: 70px;
+}
+
+#e3 {
+  background: var(--green-color);
+  animation-name: "e3";
+  top: 70px;
+}
+
+#e4 {
+  background: var(--red-color);
+  animation-name: "e4";
+  top: 70px;
+  left: 70px;
+}
+
+@keyframes e1 {
+  0% {  left: 0px; top: 0px}
+  25% {  left: 70px; top: 0px}
+  50% {  left: 70px; top: 70px;}
+  75% {  left: 0; top: 70px}
+  100% {  left: 0; top: 0px}
+}
+
+@keyframes e2 {
+  0% {  left: 70px; top: 0px}
+  25% {  left: 70px; top: 70px;}
+  50% {  left: 0; top: 70px}
+  75% {  left: 0; top: 0px}
+  100% {  left: 70px; top: 0px}
+}
+
+@keyframes e3 {
+  0% {  left: 70px; top: 70px;}
+  25% {  left: 0; top: 70px}
+  50% {  left: 0; top: 0px}
+  75% {  left: 70px; top: 0px}
+  100% {  left: 70px; top: 70px;}
+
+}
+
+@keyframes e4 {
+  0% {  left: 70px; top: 70px;}
+  25% {  left: 0; top: 70px}
+  50% {  left: 0; top: 0px}
+  75% {  left: 70px; top: 0px}
+  100% {  left: 70px; top: 70px;}
+}
