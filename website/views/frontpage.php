@@ -27,6 +27,7 @@
 </head>
 
 <body>
+    <!-- Sign-up form when user clicks a map icon -->
     <div id="popupDiv" class="PopupDiv Hidden">
         <form class="PopupForm" method="post">
             <p class="Close" onclick="togglePopup('',false)">Sulje</p>
@@ -39,11 +40,15 @@
         </form>
     </div>
     <script src="./js/popupForm.js"></script>
+
+    <!-- Navigation & logo -->
     <header>
         <nav>
             <img alt="Logo" class="Logo" src="./images/HeroBanner/AnneSetalaLogo.jpg">
         </nav>
     </header>
+
+    <!-- Herobanner and introduction text -->
     <main>
         <div class="Herobanner">
             <img class="Banner" alt="Banner" src="./images/HeroBanner/HeroBannerKuvia/KuvaNorja3_Pixabay.jpg">
@@ -60,6 +65,8 @@
             </div>
         </div>
     </main>
+
+    <!-- Services section & about Anne Setälä -->
     <section class="Service">
         <div class="Images">
             <img class="Img2" alt="Kuva" src="./images/Palvelusta/PalvelustaKuvia/AnneSetala_Kuva4.JPG">
@@ -84,13 +91,18 @@
             <p>Anne</p>
         </div>
     </section>
+
+    <!-- A slide menu of references -->
     <section class="References">
         <div class="Header">
             <h2>Kokemuksia Anne Setälän liikuntamatkoista</h2>
             <p>Olemme koonneet tähän tyytyväisten asiakkaidemme kokemuksia liikuntamatkoistamme Klikkaa referenssin kohdalta, niin pääset asiakaskertomukseen! </p>
         </div>
         <div class="Content" id="animatedref">
+            
+            <!-- A sub div containing each reference. This way each reference will be hidden when outside boundaries (each reference is here twice to make the transitions seem endless) -->
             <div id="asub" class="sub">
+                <!-- An example of a reference -->
                 <div class="Ref">
                     <h3 class="Header">Taloushallinnon ammattilainen Anja Kirjuri, 45-vuotta.</h3>
                     <img alt="Kuva" src="./images/Referenssit/Referenssi1_AnjaKirjuri.jpg">
@@ -165,10 +177,15 @@
         </div>
     </section>
     <script src="./js/animatedRef.js"></script>
+
+    <!-- Map -->
     <section id="mapsection" class="Map">
         <h2 class="Header">Kartta</h2>
         <div id="map"></div>
     </section>
+    <script src="./js/map.js"></script>
+
+    <!-- Contact info & contact form-->
     <section class="Contact">
         <form class="ContactForm">
             <h2>Haluan lisätietoa</h2>
@@ -179,7 +196,6 @@
             <input class="Button" type="submit" value="Lähetä">
         </form>
     </section>
-    <script src="./js/map.js"></script>
 </body>
 
 </html>

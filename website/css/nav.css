@@ -11,6 +11,8 @@ nav .Logo {
     height: 100%;
 }
 
+/* --- Navigation links --- */
+
 nav .Links {
     display: flex;
     flex-direction: row;

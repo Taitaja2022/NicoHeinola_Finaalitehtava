@@ -1,31 +1,51 @@
 <?php
 
-function checkLogin($user, $pass){
-    if ($user == "admin" && $pass == "taitaja2022"){
+/**
+ * Checks if username and password are correct
+ */
+function checkLogin($user, $pass)
+{
+    if ($user == "admin" && $pass == "taitaja2022") {
         $_SESSION["isLogged"] = true;
     }
     return true;
 }
 
-function isLogged(){
-    if(isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]){
+/**
+ * Returns true if user has logged in, otherwise false.
+ */
+function isLogged()
+{
+    if (isset($_SESSION["isLogged"]) && $_SESSION["isLogged"]) {
         return true;
     }
     return false;
 }
 
-function logOut(){
+/**
+ * Logs the user out
+ */
+function logOut()
+{
     $_SESSION["isLogged"] = false;
 }
 
-function sanitizeName($file){
+/**
+ * Makes a string folder-friendly
+ */
+function sanitizeName($file)
+{
     $file = mb_ereg_replace("([^\w\s\d\-_~,;\[\]\(\).])", '', $file);
-    // Remove any runs of periods (thanks falstro!)
     $file = mb_ereg_replace("([\.]{2,})", '', $file);
     return $file;
 }
 
-function sanitizeString($text){
+/**
+ * Removes new lines.
+ * Used for descriptions of trips so they don't break
+ */
+function sanitizeString($text)
+{
     $text = preg_replace("/\r|\n/", "", $text);
     return $text;
 }

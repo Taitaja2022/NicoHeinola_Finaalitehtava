@@ -7,19 +7,19 @@
     height: 100vh;
 }
 
-.Map .Header {
-    text-align: center;
-    margin: auto;
-    color: var(--textColor2);
-}
-
 #map {
     height: 80%;
     width: 80%;
     margin: auto;
 }
 
-/* MAKER */
+.Map .Header {
+    text-align: center;
+    margin: auto;
+    color: var(--textColor2);
+}
+
+/* Popup when clicking a marker */
 
 .popup {
     word-break: break-all;
@@ -34,6 +34,7 @@
     font-size: 20px;
 }
 
+/* HeaderDiv contains image, title, and a date */
 .popup .headerDiv {
     display: flex;
     flex-direction: row;
@@ -52,6 +53,7 @@
     flex-direction: column;
 }
 
+/* Contains download and sign-up buttons */
 .popup .ButtonDiv {
     display: flex;
     flex-direction: row;

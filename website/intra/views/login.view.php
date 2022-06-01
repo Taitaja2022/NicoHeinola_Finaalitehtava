@@ -1,5 +1,6 @@
 <?php
 
+// A simple login form
 echo "
 <form method='post'>
 <label>Käyttäjänimi</label>    
